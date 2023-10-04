@@ -1,20 +1,28 @@
 import './App.css';
 import Header from './components/Header';
-import characterResponse from './characters-response.json'
-import CharacterGallery from "./components/CharacterGallery";
-import {useState} from "react";
+import CharacterGallery from './components/CharacterGallery';
+import { useEffect, useState } from 'react';
 
 function App() {
-    //const characters = characterResponse.results
-    const [characters, setCharacters] = useState([])
+  const [characters, setCharacters] = useState([]);
 
-    const handleClick = () => setCharacters(characterResponse.results)
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch('https://rickandmortyapi.com/api/character');
+      const jsonResult = await result.json();
 
-    return <div>
-        <Header title="Character Gallery"/>
-        <button onClick={handleClick}>Load Characters</button>
-        <CharacterGallery characters = {characters}/>
+      setCharacters(jsonResult.results);
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <Header title="Character Gallery" />
+      <CharacterGallery characters={characters} />
     </div>
+  );
 }
 
 export default App;
