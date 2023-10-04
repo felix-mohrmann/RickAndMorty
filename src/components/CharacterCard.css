@@ -1,0 +1,16 @@
+.character-card {
+    padding: 24px;
+    width: 300px;
+    border: 1px solid gray;
+    box-shadow: gray;
+    border-radius: 12px;
+    box-shadow: 1px 2px 8px #666;
+}
+
+.character-card__img {
+    width: 80%;
+}
+
+.character-card__title {
+    padding: 12px;
+}

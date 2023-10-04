@@ -1,0 +1,10 @@
+.character-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 12px;
+}
+
+.character-gallery .character-card {
+    margin: 12px;
+}

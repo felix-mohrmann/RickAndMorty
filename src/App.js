@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import characterResponse from './characters-response.json'
+import CharacterGallery from "./components/CharacterGallery";
+import {useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    //const characters = characterResponse.results
+    const [characters, setCharacters] = useState([])
+
+    const handleClick = () => setCharacters(characterResponse.results)
+
+    return <div>
+        <Header title="Character Gallery"/>
+        <button onClick={handleClick}>Load Characters</button>
+        <CharacterGallery characters = {characters}/>
     </div>
-  );
 }
 
 export default App;
